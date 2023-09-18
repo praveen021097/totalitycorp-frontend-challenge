@@ -1,0 +1,28 @@
+{
+  "user": [
+    {
+      "id": 1,
+      "userName": "json-server",
+      "email": "typicode@gmail.com",
+      "password": "ravi@1233"
+    },
+    {
+      "userName": "sumit",
+      "email": "king@gmail.com",
+      "password": "king@1233",
+      "id": 2
+    },
+    {
+      "userName": "Amit",
+      "email": "amit@gmail.com",
+      "password": "Amit@123",
+      "id": 3
+    },
+    {
+      "userName": "dsfdf",
+      "email": "fdgfgf",
+      "password": "fgdgfdfd",
+      "id": 4
+    }
+  ]
+}

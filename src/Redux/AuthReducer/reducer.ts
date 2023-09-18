@@ -1,24 +1,22 @@
 import { Action } from "./actions";
 import { ActionTypes } from "./actionTypes";
 
-const userDetails = JSON.parse(localStorage.getItem('userDetails') || '{}');
+const userData = JSON.parse(localStorage.getItem('userDetails') || '{}');
 
 export interface IsAuthstate {
     isAuth: boolean;
-    token: string,
-    user: any,
-    isLoading: boolean,
-    isError: boolean,
-    adminId: number | string
+    user: any;
+    isLoading: boolean;
+    isError: boolean;
+   
 }
 
 const initialState = {
-    isAuth: userDetails.token ? true : false,
-    token: userDetails.token || "",
-    user: userDetails.user || {},
+    isAuth: userData.name ? true : false,
+    user: userData.user || {},
     isLoading: false,
-    isError: false,
-    adminId: userDetails?.user?.id || ""
+    isError: false
+    
 };
 
 
@@ -29,7 +27,6 @@ export const reducer = (state: IsAuthstate = initialState, action: Action): IsAu
 
     switch (action.type) {
         case ActionTypes.LOGIN_SUCCESS:
-          localStorage.setItem("userDetails",JSON.stringify(payload))
             return{
                 ...state,
                 isAuth:true,

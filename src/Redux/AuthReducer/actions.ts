@@ -1,17 +1,17 @@
 
 import { ActionTypes } from "./actionTypes";
 import { IsAuthstate} from "./reducer";
- interface isLoginSuccess{
+ export interface isLoginSuccess{
     type:ActionTypes.LOGIN_SUCCESS,
     payload:IsAuthstate
 }
- interface isLoginLoading{
+ export interface isLoginLoading{
     type:ActionTypes.LOGIN_REQUEST,
     payload:true
     
 }
 
- interface isLoginFailure{
+ export interface isLoginFailure{
     type:ActionTypes.LOGIN_ERROR,
     payload:true
     
