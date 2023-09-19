@@ -5,6 +5,8 @@ import { Dispatch } from 'redux';
 import { isGetProductFailure, isGetProductSuccess } from '../Redux/ProductReducer/actions';
 import { getProducts } from '../Services/ProductService/ProductService';
 import { Box, Grid, Card, CardBody, Image, Stack, Heading, Text, Divider, CardFooter, Button, ButtonGroup, GridItem, Flex, Select, HStack } from '@chakra-ui/react';
+import { addTocart, getToCart } from '../Services/CartServices/CartServices';
+import { isAddProductFailure, isAddProductSuccess } from '../Redux/CartReducer/actions';
 
 export interface ProductInfo {
   id: number;
@@ -18,23 +20,24 @@ export interface ProductInfo {
 const userData = JSON.parse(localStorage.getItem('userDetails') || '{}');
 const Products = () => {
   const product:ProductInfo[] = useSelector((state: any) => state.ProductReducer.products);
-  const dispatch: Dispatch<isGetProductFailure | isGetProductSuccess> = useDispatch();
-  const [sortCategoryQuery,setSortCategoryQuery] =useState<string>("")
+  const cartItems:ProductInfo[] = useSelector((state:any)=> state.CartReducer.cart);
+  const dispatch: Dispatch<isGetProductFailure | isGetProductSuccess |isAddProductFailure |isAddProductSuccess> = useDispatch();
   const [sortedProducts,setSortedProducts] = useState<ProductInfo[]>(product);
+
   useEffect(() => {
-   
-      
-        if(product?.length === 0){
+        if(product?.length === 0 || cartItems?.length ===0 ){
           getProducts()(dispatch);
-          
-        
+          getToCart()(dispatch)
         }
         setSortedProducts(product);
-        console.log("useFFext",product)
+        
   }, [product?.length,dispatch,setSortedProducts]);
- console.log("product",product)
+
+
+ console.log("cartproduct",cartItems)
+
   const sortBy:React.ChangeEventHandler<HTMLSelectElement> =(e)=>{
-    setSortCategoryQuery(e.target.value);
+  
       if(e.target.value ==="ascByCategory"){
         
        const sortedByAsc = product.sort((a, b) => (a.category < b.category) ? -1 : 1)
@@ -70,6 +73,8 @@ const Products = () => {
         setSortedProducts(product)
       }
     }
+
+    
   return (
     <div style={{ backgroundColor: "skyblue",width:"100%" }}>
       <Navbar name={userData.userName} />
@@ -128,8 +133,12 @@ const Products = () => {
                 <Divider />
                 <CardFooter>
                   <ButtonGroup spacing='1' mt={"-10px"}>
-                    <Button variant="outline" colorScheme='blue'>
-                      Add to cart
+                    <Button variant="outline" colorScheme='blue' isDisabled={true} onClick={()=>{
+                      console.log("item",item)
+                      addTocart(item)(dispatch)
+                      
+                    }}>
+                      Add To Cart
                     </Button>
                   </ButtonGroup>
                   <Text  fontSize={"17px"} ml={"40px"} fontFamily={"cursive"} fontWeight={"550"}>Rating:-{item.rating}</Text>
