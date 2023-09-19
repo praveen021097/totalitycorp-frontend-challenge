@@ -14,7 +14,7 @@ import {
     useColorModeValue,
 } from '@chakra-ui/react';
 
-import { loginService } from '../Services/AuthServie';
+import { loginService } from '../Services/AuthService/AuthServie';
 import { userInfo } from 'os';
 import { isLoginFailure, isLoginSuccess } from '../Redux/AuthReducer/actions';
 import { ActionTypes } from '../Redux/AuthReducer/actionTypes';

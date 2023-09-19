@@ -5,6 +5,7 @@ import {
     compose,
   } from "redux";
 import {reducer as AuthReducer} from "./AuthReducer/reducer";
+import {reducer as ProductReducer} from "./ProductReducer/reducer";
 import thunk from "redux-thunk";
   declare global {
     interface Window {
@@ -13,7 +14,7 @@ import thunk from "redux-thunk";
   }
 
   const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-  const rootReducer = combineReducers({AuthReducer});
+  const rootReducer = combineReducers({AuthReducer,ProductReducer});
 
   const store = legacy_createStore(rootReducer,composeEnhancers(applyMiddleware(thunk)));
   export {store}
