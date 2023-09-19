@@ -24,59 +24,66 @@ const Products = () => {
   const cartItems:ProductInfo[] = useSelector((state:any)=> state.CartReducer.cart);
   const dispatch: Dispatch<isGetProductFailure | isGetProductSuccess |isAddProductFailure |isAddProductSuccess> = useDispatch();
   const [sortedProducts,setSortedProducts] = useState<ProductInfo[]>(product);
-
+  const [buttonDisable,setButtonDisable] =useState<Boolean | undefined>(false)
+  const buttonRef = useRef<HTMLButtonElement | null>(null);
   useEffect(() => {
-        if(product?.length === 0 || cartItems?.length ===0 ){
+        if(product?.length === 0 ){
           getProducts()(dispatch);
-          getToCart()(dispatch)
+          
         }
         setSortedProducts(product);
         
   }, [product?.length,dispatch,setSortedProducts]);
 
+  useEffect(() => {
+    if(cartItems?.length ===0 ){
+  
+      getToCart()(dispatch)
+    }
+    
+    
+}, [cartItems?.length,dispatch,]);
 
- console.log("cartproduct",cartItems)
+ console.log("sortedproduct",sortedProducts)
 
   const sortBy:React.ChangeEventHandler<HTMLSelectElement> =(e)=>{
   
       if(e.target.value ==="ascByCategory"){
         
        const sortedByAsc = product.sort((a, b) => (a.category < b.category) ? -1 : 1)
-       console.log(sortedByAsc)
-       sortedByAsc.length>0 && setSortedProducts(sortedByAsc);
+       console.log("sortedData",sortedByAsc)
+       sortedByAsc.length>0 && setSortedProducts(prev=>prev=sortedByAsc);
       }
       else if(e.target.value ==="descByCategory"){
         const sortedByDes = product.sort((a, b) => (a.category > b.category) ? -1 : 1)
-       console.log(sortedByDes)
-       sortedByDes.length>0 && setSortedProducts(sortedByDes);
+       console.log("sortedData",sortedByDes)
+       sortedByDes.length>0 && setSortedProducts(prev=>prev=sortedByDes);
       }
       else if(e.target.value ==="ascByPrice"){
         const sortedByDes = product.sort((a, b) => (a.price - b.price) )
-       console.log(sortedByDes)
-       sortedByDes.length>0 && setSortedProducts(sortedByDes);
+       console.log("sortedData",sortedByDes)
+       sortedByDes.length>0 && setSortedProducts(prev=>prev=sortedByDes);
       }
       else if(e.target.value ==="descByPrice"){
         const sortedByDes = product.sort((a, b) => (b.price - a.price) )
-       console.log(sortedByDes)
-       sortedByDes.length>0 && setSortedProducts(sortedByDes);
+       console.log("sortedData",sortedByDes)
+       sortedByDes.length>0 && setSortedProducts(prev=>prev=sortedByDes);
       }
       else if(e.target.value ==="ascByRating"){
         const sortedByDes = product.sort((a, b) => (a.rating - b.rating))
-       console.log(sortedByDes)
-       sortedByDes.length>0 && setSortedProducts(sortedByDes);
+       console.log("sortedData",sortedByDes)
+       sortedByDes.length>0 && setSortedProducts(prev=>prev=sortedByDes);
       }
       else if(e.target.value ==="descByRating"){
         const sortedByDes = product.sort((a, b) => (b.rating - a.rating) )
-       console.log(sortedByDes)
-       sortedByDes.length>0 && setSortedProducts(sortedByDes);
+       console.log("sortedData",sortedByDes)
+       sortedByDes.length>0 && setSortedProducts(prev=>prev=sortedByDes);
       }
       else{
         setSortedProducts(product)
       }
     }
-    // const addToCartHandler =(e)=>{
-        
-    // }
+     
     
   return (
     <div style={{ backgroundColor: "skyblue",width:"100%"}}  >
@@ -106,7 +113,7 @@ const Products = () => {
           </HStack>
         </Box>
         <Grid templateColumns='repeat(3, 1fr)' templateRows={"repeat(7,1fr)"} gap={6} w={"73%"}  >
-          {sortedProducts.length > 0 && sortedProducts.map((item: ProductInfo) => {
+          {sortedProducts.map((item: ProductInfo) => {
             return <GridItem w='100%' h={"400px"} key={item.id} >
               <Card  >
                 <CardBody>
@@ -136,21 +143,20 @@ const Products = () => {
                 <Divider />
                 <CardFooter>
                   <ButtonGroup spacing='1' mt={"-10px"}>
-                    <Button variant="outline" colorScheme='blue'  onClick={()=>{
+                    <Button variant="outline" colorScheme='blue' ref={buttonRef}  onClick={()=>{
                     let flag:Boolean = cartItems.length>0 && cartItems.find((el)=>el.id!==item.id)?false:true;
-                    if(flag){
-                      alert("this item already added!")
-                      flag=false;
-                    }
-                    else{
-                      addTocart(item)(dispatch).then((res)=>{
-                        if(res===ActionTypes.ADD_TO_CART_SUCCESS){
-                          alert("added successfully!");
-                          flag=true;
+                    setButtonDisable(flag);
+
+
+                    
+                    
+                     
+                        addTocart(item)(dispatch)
+                        if(buttonRef.current){
+                          buttonRef.current.setAttribute("disabled","true");
+
                         }
-                        
-                      })
-                    }
+                    
                     
                   }}>
                       Add To Cart
