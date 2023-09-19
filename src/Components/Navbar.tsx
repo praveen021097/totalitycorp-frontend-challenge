@@ -53,7 +53,7 @@ const Navbar = ({name}:User) => {
     
     return (
       <>
-        <Box bg={useColorModeValue('gray.100', 'gray.900')}>
+        <Box bg={useColorModeValue('gray.100', 'gray.900')} w={"100%"} position={"fixed"} zIndex={1000}>
           <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
             <IconButton
               size={'md'}
@@ -63,7 +63,7 @@ const Navbar = ({name}:User) => {
               onClick={isOpen ? onClose : onOpen}
             />
             <HStack spacing={8} alignItems={'center'}>
-              <Box><Link to="/"><Heading>Totality</Heading></Link></Box>
+              <Box pl={"20px"}><Link to="/"><Heading>Totality</Heading></Link></Box>
               <HStack as={'nav'} spacing={4} display={{ base: 'none', md: 'flex' }} marginLeft={"200px"}>
                 {Links.map((link) => (
                   <NavLink key={link}>{link}</NavLink>

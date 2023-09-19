@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Navbar from '../Components/Navbar'
 import { useDispatch, useSelector } from 'react-redux';
 import { Dispatch } from 'redux';
@@ -7,6 +7,7 @@ import { getProducts } from '../Services/ProductService/ProductService';
 import { Box, Grid, Card, CardBody, Image, Stack, Heading, Text, Divider, CardFooter, Button, ButtonGroup, GridItem, Flex, Select, HStack } from '@chakra-ui/react';
 import { addTocart, getToCart } from '../Services/CartServices/CartServices';
 import { isAddProductFailure, isAddProductSuccess } from '../Redux/CartReducer/actions';
+import { ActionTypes } from '../Redux/CartReducer/actionTypes';
 
 export interface ProductInfo {
   id: number;
@@ -73,14 +74,16 @@ const Products = () => {
         setSortedProducts(product)
       }
     }
-
+    // const addToCartHandler =(e)=>{
+        
+    // }
     
   return (
-    <div style={{ backgroundColor: "skyblue",width:"100%" }}>
+    <div style={{ backgroundColor: "skyblue",width:"100%"}}  >
       <Navbar name={userData.userName} />
 
-      <Flex justifyContent={"space-between"} alignContent={"center"} gap={3} p={3}>
-        <Box  bg={"white"} h={"300px"} borderRadius={"10px"} w={"20%"}>
+      <Flex justifyContent={"space-between"}  alignContent={"center"} gap={3} pt={24}   >
+        <Box  bg={"white"} h={"300px"} borderRadius={"10px"} w={"20%"} position={"sticky"}>
           <Text color='blue.600' fontSize='2xl' fontWeight={"500"}>
             Sort Products
           </Text>
@@ -102,7 +105,7 @@ const Products = () => {
             </Select>
           </HStack>
         </Box>
-        <Grid templateColumns='repeat(3, 1fr)' templateRows={"repeat(7,1fr)"} gap={6} w={"73%"}>
+        <Grid templateColumns='repeat(3, 1fr)' templateRows={"repeat(7,1fr)"} gap={6} w={"73%"}  >
           {sortedProducts.length > 0 && sortedProducts.map((item: ProductInfo) => {
             return <GridItem w='100%' h={"400px"} key={item.id} >
               <Card  >
@@ -133,11 +136,23 @@ const Products = () => {
                 <Divider />
                 <CardFooter>
                   <ButtonGroup spacing='1' mt={"-10px"}>
-                    <Button variant="outline" colorScheme='blue' isDisabled={true} onClick={()=>{
-                      console.log("item",item)
-                      addTocart(item)(dispatch)
-                      
-                    }}>
+                    <Button variant="outline" colorScheme='blue'  onClick={()=>{
+                    let flag:Boolean = cartItems.length>0 && cartItems.find((el)=>el.id!==item.id)?false:true;
+                    if(flag){
+                      alert("this item already added!")
+                      flag=false;
+                    }
+                    else{
+                      addTocart(item)(dispatch).then((res)=>{
+                        if(res===ActionTypes.ADD_TO_CART_SUCCESS){
+                          alert("added successfully!");
+                          flag=true;
+                        }
+                        
+                      })
+                    }
+                    
+                  }}>
                       Add To Cart
                     </Button>
                   </ButtonGroup>
