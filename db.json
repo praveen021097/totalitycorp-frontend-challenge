@@ -341,6 +341,24 @@
       "email": "kallu@gmail.com",
       "password": "3424532",
       "id": 57
+    },
+    {
+      "userName": "ravi",
+      "email": "kallu@gmail.com",
+      "password": "34354356",
+      "id": 58
+    },
+    {
+      "userName": "ravi",
+      "email": "kallu@gmail.com",
+      "password": "3214245325",
+      "id": 59
+    },
+    {
+      "userName": "dsfdf",
+      "email": "eve.holt@reqres.in",
+      "password": "453535",
+      "id": 60
     }
   ],
   "products": [
@@ -597,6 +615,42 @@
       "category": "women's clothing",
       "image": "https://fakestoreapi.com/img/81XH0e8fefL._AC_UY879_.jpg",
       "rating": 2.9
+    },
+    {
+      "id": 2,
+      "title": "Mens Casual Premium ",
+      "price": 22.3,
+      "description": "Slim-fitting style, contrast raglan long sleeve, three-button henley placket, light weight & soft fabric for breathable and comfortable wearing. And Solid stitched shirts with round neck made for durability and a great fit for casual fashion wear and diehard baseball fans. The Henley style round neckline includes a three-button placket.",
+      "category": "men's clothing",
+      "image": "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",
+      "rating": 1.2
+    },
+    {
+      "id": 6,
+      "title": "Solid Gold Petite ",
+      "price": 168,
+      "description": "Satisfaction Guaranteed. Return or exchange any order within 30 days.Designed and sold by Hafeez Center in the United States. Satisfaction Guaranteed. Return or exchange any order within 30 days.",
+      "category": "jewelery",
+      "image": "https://fakestoreapi.com/img/61sbMiUnoGL._AC_UL640_QL65_ML3_.jpg",
+      "rating": 4
+    },
+    {
+      "id": 11,
+      "title": "Silicon 256GB SSD ",
+      "price": 109,
+      "description": "3D NAND flash are applied to deliver high transfer speeds Remarkable transfer speeds that enable faster bootup and improved overall system performance. The advanced SLC Cache Technology allows performance boost and longer lifespan 7mm slim design suitable for Ultrabooks and Ultra-slim notebooks. Supports TRIM command, Garbage Collection technology, RAID, and ECC (Error Checking & Correction) to provide the optimized performance and enhanced reliability.",
+      "category": "electronics",
+      "image": "https://fakestoreapi.com/img/71kWymZ+c+L._AC_SX679_.jpg",
+      "rating": 4.8
+    },
+    {
+      "id": 15,
+      "title": "Snowboard Jacket",
+      "price": 56.99,
+      "description": "Note:The Jackets is US standard size, Please choose size as your usual wear Material: 100% Polyester; Detachable Liner Fabric: Warm Fleece. Detachable Functional Liner: Skin Friendly, Lightweigt and Warm.Stand Collar Liner jacket, keep you warm in cold weather. Zippered Pockets: 2 Zippered Hand Pockets, 2 Zippered Pockets on Chest (enough to keep cards or keys)and 1 Hidden Pocket Inside.Zippered Hand Pockets and Hidden Pocket keep your things secure. Humanized Design: Adjustable and Detachable Hood and Adjustable cuff to prevent the wind and water,for a comfortable fit. 3 in 1 Detachable Design provide more convenience, you can separate the coat and inner as needed, or wear it together. It is suitable for different season and help you adapt to different climates",
+      "category": "women's clothing",
+      "image": "https://fakestoreapi.com/img/51Y5NI-I5jL._AC_UX679_.jpg",
+      "rating": 2.6
     }
   ]
 }
