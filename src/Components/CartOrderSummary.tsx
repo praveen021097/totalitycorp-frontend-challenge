@@ -41,7 +41,7 @@ import { getToCart } from '../Services/CartServices/CartServices'
     const cartData = useSelector((state:any)=>state.CartReducer.cart);
     const dispatch:Dispatch<isGetCartProductFailure|isGetCartProductSuccess> = useDispatch();
     const [total,setTotal] = useState<number>(0);
-      console.log(typeof cartData)
+      
     useEffect(()=>{
       if(cartData?.length===0){
         getToCart()(dispatch)
