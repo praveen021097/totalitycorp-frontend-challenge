@@ -4,6 +4,7 @@ import Login from './Login';
 import ProtectedRoute from '../Components/ProtectedRoute';
 import Products from './Products';
 import Cart from './Cart';
+import {ShippingAndPayment } from './ShippingAndPayment';
 
 const AllRoutes = () => {
   return (
@@ -11,7 +12,7 @@ const AllRoutes = () => {
     <Route path='/' element={<ProtectedRoute><Products /></ProtectedRoute>} />
     <Route path='/cart' element={<ProtectedRoute><Cart /></ProtectedRoute>} />
     <Route path='/login' element={<Login />} />
-    
+    <Route path='/payment' element={<ProtectedRoute><ShippingAndPayment/></ProtectedRoute>} />
    </Routes>
   )
 }

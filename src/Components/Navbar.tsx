@@ -25,7 +25,7 @@ import {
   interface User{
     name:string;
   }
-  const Links = ['Products', 'Cart', 'Checkout']
+  const Links = ['Products', 'Cart']
   
   const NavLink = (props: Props) => {
     const { children } = props
