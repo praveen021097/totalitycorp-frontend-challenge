@@ -16,16 +16,21 @@ Basically, it's a Totality Frontend Challenge but it is an intermediate e-commer
 
 ## Screenshots
 Login
+
 <img src="./src/images/login.png" />
 
 homepage
+
 <img src="./src/images/homepage.png" />
 
 cart
+
 <img src="./src/images/cart.png" />
 
 checkout 
+
 <img src="./src/images/checkout.png" />
+
 ## Deployment Link
 deployed on netify:-
 https://fascinating-donut-bb97ea.netlify.app
