@@ -8,6 +8,12 @@ import {
     useColorModeValue as mode,
   } from '@chakra-ui/react'
   import { FaArrowRight } from 'react-icons/fa'
+import { ProductInfo } from '../Pages/Products'
+import { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { Dispatch } from 'redux'
+import { isGetCartProductFailure, isGetCartProductSuccess } from '../Redux/CartReducer/actions'
+import { getToCart } from '../Services/CartServices/CartServices'
  
   
   type OrderSummaryItemProps = {
@@ -16,6 +22,9 @@ import {
     children?: React.ReactNode
   }
   
+  type CartOrder ={
+    data :ProductInfo[]
+  }
   const OrderSummaryItem = (props: OrderSummaryItemProps) => {
     const { label, value, children } = props
     return (
@@ -29,12 +38,25 @@ import {
   }
   
   export const CartOrderSummary = () => {
+    const cartData = useSelector((state:any)=>state.CartReducer.cart);
+    const dispatch:Dispatch<isGetCartProductFailure|isGetCartProductSuccess> = useDispatch();
+    const [total,setTotal] = useState<number>(0);
+      console.log(typeof cartData)
+    useEffect(()=>{
+      if(cartData?.length===0){
+        getToCart()(dispatch)
+      }
+      
+    },[])
+
+
+    
     return (
       <Stack spacing="8" borderWidth="1px" rounded="lg" padding="8" width="full">
         <Heading size="md">Order Summary</Heading>
   
         <Stack spacing="6">
-          <OrderSummaryItem label="Subtotal" value={'3334'} />
+          <OrderSummaryItem label="Subtotal" value={`343`} />
           <OrderSummaryItem label="Shipping + Tax">
             <Link href="#" textDecor="underline">
               Calculate shipping

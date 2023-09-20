@@ -17,7 +17,9 @@ export interface ProductInfo {
   category: string;
   image: string;
   rating: number;
+  quantity:number;
 }
+
 const userData = JSON.parse(localStorage.getItem('userDetails') || '{}');
 const Products = () => {
   const product:ProductInfo[] = useSelector((state: any) => state.ProductReducer.products);
@@ -135,6 +137,7 @@ useEffect(()=>{
                     <Button variant="outline" colorScheme='blue' ref={buttonRef}  onClick={()=>{
                 
                         addTocart(item)(dispatch)
+                        getToCart()(dispatch)
                         if(buttonRef.current){
                           buttonRef.current.textContent="Added";
                         }

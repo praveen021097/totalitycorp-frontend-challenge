@@ -58,6 +58,66 @@ export const reducer = (state: IsCartProductState = initialState, action: Action
                 isLoading: false,
                 isError: true
             }
+        case ActionTypes.PRODUCT_QUANTITY_DECREASE_SUCCESS:
+            return {
+                ...state,
+                isLoading: false,
+                isError: false
+            }
+        case ActionTypes.PRODUCT_QUANTITY_DECREASE_REQUEST:
+            return {
+                ...state,
+                isLoading: true,
+                isError: false
+            }
+
+        case ActionTypes.PRODUCT_QUANTITY_DECREASE_FAILURE:
+            return {
+                ...state,
+                isLoading: false,
+                isError: true
+            }
+
+            case ActionTypes.PRODUCT_QUANTITY_INCREASE_SUCCESS:
+                return {
+                    ...state,
+                    isLoading: false,
+                    isError: false
+                }
+            case ActionTypes.PRODUCT_QUANTITY_INCREASE_REQUEST:
+                return {
+                    ...state,
+                    isLoading: true,
+                    isError: false
+                }
+    
+            case ActionTypes.PRODUCT_QUANTITY_INCREASE_FAILURE:
+                return {
+                    ...state,
+                    isLoading: false,
+                    isError: true
+                }
+
+                case ActionTypes.DELETE_PRODUCT_TO_CART_SUCCESS:
+                    return {
+                        ...state,
+                        cart: payload,
+                        isLoading: false,
+                        isError: false
+                    }
+                case ActionTypes.DELETE_PRODUCT_TO_CART_REQUEST:
+                    return {
+                        ...state,
+                        isLoading: true,
+                        isError: false
+                    }
+        
+                case ActionTypes.DELETE_PRODUCT_TO_CART_FAILURE:
+                    return {
+                        ...state,
+                        isLoading: false,
+                        isError: true
+                    }
         default:
             return state
     }
