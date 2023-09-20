@@ -9,7 +9,7 @@ Basically, it's a Totality Frontend Challenge but it is an intermediate e-commer
 
 3.ChakraUI
 
-4. json-server 
+4.json-server 
 
 5.TypeScript
 
