@@ -5,16 +5,16 @@ Basically it's a Totality Frontend Challenge but it is a intermediate e-commerce
 
 ## Screenshots
 Login
-![App Screenshot](./src/images/login.png)
+<img src="./src/images/login.png" />
 
 homepage
-![App Screenshot](./src/images/homepage.png)
+<img src="./src/images/homepage.png" />
 
 cart
-![App Screenshot](./src/images/cart.png)
+<img src="./src/images/cart.png" />
 
 checkout 
-![App Screenshot](./src/images/checkout.png)
+<img src="./src/images/checkout.png" />
 ## Deployment Link
 deployed on netify:-
 https://fascinating-donut-bb97ea.netlify.app
