@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import {useDispatch} from "react-redux";
+import { useDispatch } from "react-redux";
 import { Dispatch } from "redux";
 import {
     Flex,
@@ -18,8 +18,8 @@ import { loginService } from '../Services/AuthService/AuthServie';
 import { userInfo } from 'os';
 import { isLoginFailure, isLoginSuccess } from '../Redux/AuthReducer/actions';
 import { ActionTypes } from '../Redux/AuthReducer/actionTypes';
-import {useLocation} from "react-router-dom";
-import {useNavigate} from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 export interface UserInfo {
     userName: string;
     email: string;
@@ -35,7 +35,7 @@ const Login = () => {
     const location = useLocation();
     const navigate = useNavigate()
     const commingFrom = location.state?.from?.pathname || "/"
-    const dispatch:Dispatch<isLoginFailure | isLoginSuccess> = useDispatch()
+    const dispatch: Dispatch<isLoginFailure | isLoginSuccess> = useDispatch()
     const changEmailHandler: React.ChangeEventHandler<HTMLInputElement> = (e) => {
         setEmail(e.target.value);
     }
@@ -48,27 +48,27 @@ const Login = () => {
 
     const handleSubmit: React.MouseEventHandler<HTMLButtonElement> = (e) => {
         e.preventDefault();
-        if(userName!="" && email!="" && password!=""){
-            const payload ={
-                userName:userName,
-                email:email,
-                password:password
+        if (userName != "" && email != "" && password != "") {
+            const payload = {
+                userName: userName,
+                email: email,
+                password: password
             }
-           loginService(payload)(dispatch).then((res)=>{
-                if(res == ActionTypes.LOGIN_SUCCESS){
+            loginService(payload)(dispatch).then((res) => {
+                if (res == ActionTypes.LOGIN_SUCCESS) {
                     alert("login successfully")
-                    navigate(commingFrom,{replace:true})
+                    navigate(commingFrom, { replace: true })
                 }
-                else{
+                else {
                     alert("something went wrong")
                 }
-           })
-           
+            })
+
         }
-        
+
 
     }
-    
+
     return (
         <Flex
             minH={'100vh'}

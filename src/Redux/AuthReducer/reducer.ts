@@ -8,7 +8,7 @@ export interface IsAuthstate {
     user: any;
     isLoading: boolean;
     isError: boolean;
-   
+
 }
 
 const initialState = {
@@ -16,7 +16,7 @@ const initialState = {
     user: userData.user || {},
     isLoading: false,
     isError: false
-    
+
 };
 
 
@@ -27,12 +27,12 @@ export const reducer = (state: IsAuthstate = initialState, action: Action): IsAu
 
     switch (action.type) {
         case ActionTypes.LOGIN_SUCCESS:
-            return{
+            return {
                 ...state,
-                isAuth:true,
-                user:payload,
-               isLoading:false,
-               isError:false
+                isAuth: true,
+                user: payload,
+                isLoading: false,
+                isError: false
             }
 
         case ActionTypes.LOGIN_REQUEST:

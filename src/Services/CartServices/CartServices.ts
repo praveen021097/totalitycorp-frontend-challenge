@@ -5,7 +5,7 @@ import { isAddProductFailure, isAddProductSuccess, isCartProductDecreaseFailure,
 import { ProductInfo } from "../../Pages/Products";
 
 export const addTocart = (payload: ProductInfo) => (dispatch: Dispatch<isAddProductFailure | isAddProductSuccess>): Promise<void | ActionTypes> => {
-    return axios.post("http://localhost:8080/cart", payload).then((res) => {
+    return axios.post("https://honey-rilb.onrender.com/cart", payload).then((res) => {
         dispatch({ type: ActionTypes.ADD_TO_CART_SUCCESS, payload: res.data });
         console.log("added succesfully")
         return ActionTypes.ADD_TO_CART_SUCCESS;
@@ -18,7 +18,7 @@ export const addTocart = (payload: ProductInfo) => (dispatch: Dispatch<isAddProd
 
 export const getToCart = () => (dispatch: Dispatch<isGetCartProductFailure | isGetCartProductSuccess>): Promise<void | ActionTypes> => {
 
-    return axios.get("http://localhost:8080/cart").then((res) => {
+    return axios.get("https://honey-rilb.onrender.com/cart").then((res) => {
         dispatch({ type: ActionTypes.GET_DATA_TO_CART_SUCCESS, payload: res.data });
         return ActionTypes.GET_DATA_TO_CART_SUCCESS;
     })
@@ -28,7 +28,7 @@ export const getToCart = () => (dispatch: Dispatch<isGetCartProductFailure | isG
 }
 
 export const productQuantityIncrease = (id: number, payload: ProductInfo) => (dispatch: Dispatch<isCartProductIncreaseFailure | isCartProductIncreaseRequest | isCartProductIncreaseSuccess>): Promise<void | ActionTypes> => {
-    return axios.patch(`http://localhost:8080/cart/${id}`, payload).then((res) => {
+    return axios.patch(`https://honey-rilb.onrender.com/cart/${id}`, payload).then((res) => {
         dispatch({ type: ActionTypes.PRODUCT_QUANTITY_INCREASE_SUCCESS, payload: res.data })
     })
     .catch((err) => {
@@ -37,7 +37,7 @@ export const productQuantityIncrease = (id: number, payload: ProductInfo) => (di
 }
 
 export const productQuantityDecrease = (id: number, payload: ProductInfo) => (dispatch: Dispatch<isCartProductDecreaseFailure | isCartProductDecreaseRequest | isCartProductDecreaseSuccess>): Promise<void | ActionTypes> => {
-    return axios.patch(`http://localhost:8080/cart/${id}`, payload).then((res) => {
+    return axios.patch(`https://honey-rilb.onrender.com/cart/${id}`, payload).then((res) => {
         dispatch({ type: ActionTypes.PRODUCT_QUANTITY_DECREASE_SUCCESS, payload: res.data })
     })
     .catch((err) => {
@@ -46,7 +46,7 @@ export const productQuantityDecrease = (id: number, payload: ProductInfo) => (di
 }
 
 export const deleteProductFromCart = (id: number) => (dispatch: Dispatch<isCartProductDeleteFailure | isCartProductDeleteSuccess>): Promise<void | ActionTypes> => {
-    return axios.delete(`http://localhost:8080/cart/${id}`).then((res) => {
+    return axios.delete(`https://honey-rilb.onrender.com/cart/${id}`).then((res) => {
         dispatch({ type: ActionTypes.DELETE_PRODUCT_TO_CART_SUCCESS, payload: res.data })
     })
      .catch((err) => {

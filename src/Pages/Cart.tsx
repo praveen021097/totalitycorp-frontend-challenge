@@ -20,6 +20,9 @@ import { isCartProductDeleteFailure, isCartProductDeleteSuccess, isCartProductIn
 import { ProductInfo } from './Products';
 import { FaArrowRight } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import Navbar from '../Components/Navbar';
+
+const userData = JSON.parse(localStorage.getItem('userData') || '{}');
 const Cart = () => {
   const cartData = useSelector((state: any) => state.CartReducer.cart);
   const dispatch: Dispatch<isGetCartProductFailure | isGetCartProductSuccess | isCartProductIncreaseSuccess | isCartProductIncreaseFailure | isCartProductDeleteFailure | isCartProductDeleteSuccess> = useDispatch();
@@ -30,19 +33,22 @@ const Cart = () => {
       getToCart()(dispatch)
     }
   }, [counter, cartData?.length, dispatch])
-  return (
+  return (<>
+  <Navbar name={userData.username}/>
     <Box
       maxW={{ base: '3xl', lg: '7xl' }}
       mx="auto"
       px={{ base: '4', md: '8', lg: '12' }}
       py={{ base: '6', md: '8', lg: '12' }}
+    
     >
+      
       <Stack
         direction={{ base: 'column', lg: 'row' }}
         align={{ lg: 'flex-start' }}
         spacing={{ base: '8', md: '16' }}
       >
-        <Stack spacing={{ base: '8', md: '10' }} flex="2">
+        <Stack spacing={{ base: '8', md: '10' }} flex="2"   pt={"100px"}>
           <Heading fontSize="2xl" fontWeight="extrabold">
             Shopping Cart {`(${cartData.length})`} item
           </Heading>
@@ -90,7 +96,7 @@ const Cart = () => {
                         setCounter(prev => prev + 1)
                         const payload = { ...item };
                         payload.quantity = payload.quantity + 1;
-                        payload.price = payload.price +Math.floor((payload.price / (payload.quantity - 1)))
+                        payload.price = payload.price + Math.floor((payload.price / (payload.quantity - 1)))
                         productQuantityIncrease(item.id, payload)(dispatch)
                         getToCart()(dispatch)
                       }}> <Icon as={AddIcon} w={3} h={3} /></Button>
@@ -110,7 +116,6 @@ const Cart = () => {
                   justify="space-between"
                   display={{ base: 'flex', md: 'none' }}
                 >
-                  
                 </Flex>
               </Flex>
             }
@@ -118,7 +123,7 @@ const Cart = () => {
           </Stack>
         </Stack>
 
-        <Flex direction="column" align="center" flex="1">
+        <Flex direction="column" align="center" flex="1"   pt={"100px"}>
           {/* cart Order Summary */}
           <Stack spacing="8" borderWidth="1px" rounded="lg" padding="8" width="full">
             <Heading size="md">Order Summary</Heading>
@@ -129,7 +134,7 @@ const Cart = () => {
                   Total
                 </Text>
                 <Text fontSize="xl" fontWeight="extrabold">
-                 {cartData.length>0 && cartData.reduce((acc:number,curr:ProductInfo)=>acc+curr.price,0) }
+                  {cartData.length > 0 && cartData.reduce((acc: number, curr: ProductInfo) => acc + curr.price, 0)}
                 </Text>
               </Flex>
             </Stack>
@@ -140,11 +145,12 @@ const Cart = () => {
           {/* card Order Summary end */}
           <HStack mt="6" fontWeight="semibold">
             <p>or</p>
-            <Link  to={"/"}><Text color={mode('blue.500', 'blue.200')}>Continue shopping</Text></Link>
+            <Link to={"/"}><Text color={mode('blue.500', 'blue.200')}>Continue shopping</Text></Link>
           </HStack>
         </Flex>
       </Stack>
     </Box>
+    </>
   )
 }
 

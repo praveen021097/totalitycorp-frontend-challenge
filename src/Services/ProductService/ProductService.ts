@@ -4,7 +4,7 @@ import axios from "axios";
 import { Dispatch } from "redux";
 
 export const getProducts =()=>(dispatch:Dispatch<isGetProductFailure | isGetProductLoading | isGetProductSuccess>)=>{
-        return axios.get("http://localhost:8080/products").then((res)=>{
+        return axios.get("https://honey-rilb.onrender.com/products").then((res)=>{
             dispatch({type:ActionTypes.PRODUCT_GET_SUCCESS,payload:res.data});
 
         })

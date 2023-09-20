@@ -80,7 +80,7 @@ const Products = () => {
     <div style={{ backgroundColor: "skyblue", width: "100%" }}  >
       <Navbar name={userData.userName} />
 
-      <Flex justifyContent={"space-between"} alignContent={"center"} gap={3} pt={24}   >
+      <Flex justifyContent={"space-between"} alignContent={"center"} gap={3} pt={24} pr={"20px"} pl={"20px"} >
         <Box bg={"white"} h={"300px"} borderRadius={"10px"} w={"20%"} position={"sticky"}>
           <Text color='blue.600' fontSize='2xl' fontWeight={"500"}>
             Sort Products

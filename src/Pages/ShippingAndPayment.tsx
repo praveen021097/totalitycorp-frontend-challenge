@@ -1,28 +1,28 @@
 import React from 'react';
 import { useState } from "react";
-import { Box, Heading, FormControl, FormLabel, GridItem, Select, Input, Grid, Button, Text } from '@chakra-ui/react'
+import { Box, Heading, FormControl, FormLabel, GridItem, Input, Grid, Button, Text } from '@chakra-ui/react'
 import { Link } from 'react-router-dom';
 export const ShippingAndPayment = () => {
     const [show, setShow] = useState<Boolean>(false);
-    const [address,setAddress] = useState({
-            street_address:"",
-            city:"",
-            state:"",
-            postal_code:""
+    const [address, setAddress] = useState({
+        street_address: "",
+        city: "",
+        state: "",
+        postal_code: ""
     });
 
 
-     const setFormAddress:React.ChangeEventHandler<HTMLInputElement>  =(e)=>{
-            e.preventDefault();
-            const {name,value} = e.target;
-            setAddress({
-                ...address,
-                [name]:value
-            })
+    const setFormAddress: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+        e.preventDefault();
+        const { name, value } = e.target;
+        setAddress({
+            ...address,
+            [name]: value
+        })
 
-     }
+    }
 
-     console.log("address",address)
+    console.log("address", address)
     return (
         <Box
             borderWidth="1px"
@@ -32,11 +32,11 @@ export const ShippingAndPayment = () => {
             p={6}
             m="10px auto"
             as="form">
-            {show==false?<Box>
+            {show == false ? <Box>
                 <Heading w="100%" textAlign={'center'} fontWeight="normal" mb="2%">
                     User Details
                 </Heading>
-                
+
 
                 <FormControl as={GridItem} colSpan={6}>
                     <FormLabel
@@ -142,24 +142,24 @@ export const ShippingAndPayment = () => {
                     />
                 </FormControl>
                 <Box mt={"10px"}>
-                    <Button colorScheme='blue' w={"200px"} onClick={()=>{
-                       
-                        if(address.city!="" && address.postal_code!="" && address.state!="" && address.street_address!=""){
+                    <Button colorScheme='blue' w={"200px"} onClick={() => {
+
+                        if (address.city != "" && address.postal_code != "" && address.state != "" && address.street_address != "") {
                             console.log("hello")
                             setShow(!show)
                         }
                     }}>Submit</Button>
                 </Box>
-            </Box>:<Box
-            borderWidth="1px"
-            rounded="lg"
-            shadow="1px 1px 3px rgba(0,0,0,0.3)"
-            maxWidth={800}
-            p={6}
-            m="10px auto"
-            as="form">
+            </Box> : <Box
+                borderWidth="1px"
+                rounded="lg"
+                shadow="1px 1px 3px rgba(0,0,0,0.3)"
+                maxWidth={800}
+                p={6}
+                m="10px auto"
+                as="form">
                 <Text fontSize={"18px"} fontFamily={"cursive"} fontWeight={"550"}>{`${address.street_address},${address.city},${address.postal_code},(${address.state})`}</Text>
-                </Box>}
+            </Box>}
             <Box
                 borderWidth="1px"
                 rounded="lg"
@@ -179,7 +179,7 @@ export const ShippingAndPayment = () => {
                     <GridItem w='100%' colSpan={2} borderRadius={"10px"} >
                         <FormControl>
                             <FormLabel>Name on card</FormLabel>
-                            <Input type='text' name={"cardName"}/>
+                            <Input type='text' name={"cardName"} />
                         </FormControl>
                     </GridItem>
                     <GridItem w='100%' borderRadius={"10px"} >
@@ -188,22 +188,22 @@ export const ShippingAndPayment = () => {
                             <Input type='date' name={"expiryDate"} />
                         </FormControl>
                     </GridItem>
-                    
+
                     <GridItem w='100%' colSpan={2} borderRadius={"10px"} >
                         <FormControl>
                             <FormLabel>CVV/CVC</FormLabel>
-                            <Input type='number' name={"cvv"}/>
+                            <Input type='number' name={"cvv"} />
                         </FormControl>
                     </GridItem>
                     <GridItem w='100%' borderRadius={"10px"} pt={8} >
-                        <Link to={show?"/":""}><Button colorScheme='blue' w={"200px"} onClick={()=>{
+                        <Link to={show ? "/" : ""}><Button colorScheme='blue' w={"200px"} onClick={() => {
                             alert("happy journey, buy more!")
                         }}>Submit & By</Button></Link>
                     </GridItem>
                 </Grid>
             </Box>
             {/* Payment Information */}
-            
+
 
         </Box>
     )
