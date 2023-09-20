@@ -12,7 +12,7 @@ Basically, it's a Totality Frontend Challenge but it is an intermediate e-commer
 
 4. json-server 
 
-5.TypeScript
+5. TypeScript
 
 ## Screenshots
 Login
