@@ -34,7 +34,7 @@ const Cart = () => {
     }
   }, [counter, cartData?.length, dispatch])
   return (<>
-  <Navbar name={userData.username}/>
+  <Navbar name={userData.userName}/>
     <Box
       maxW={{ base: '3xl', lg: '7xl' }}
       mx="auto"
