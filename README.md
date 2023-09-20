@@ -1,7 +1,17 @@
 ## Totality Frontend Challenge
 
-Basically it's a Totality Frontend Challenge but it is a intermediate e-commerce web application . I used techStack React ,Redux, Chakra ui, and json-server ,Basically json-server used for developing after that i deployed on render .
+Basically, it's a Totality Frontend Challenge but it is an intermediate e-commerce web application. I used techStack React, Redux, Chakra ui, and json-server,. json-server was used for developing after that I deployed on render.
 
+##Tech Stack
+1.React
+
+2.Redux
+
+3.ChakraUI
+
+4. json-server 
+
+5.TypeScript
 
 ## Screenshots
 Login
